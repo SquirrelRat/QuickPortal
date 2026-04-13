@@ -34,5 +34,8 @@ namespace QuickPortal
 
         [Menu("Portal Check Interval (ms)", "How often to check for portal appearance")]
         public RangeNode<int> PortalCheckInterval { get; set; } = new RangeNode<int>(100, 50, 500);
+
+        [Menu("Debug Mode", "Show debug information about detected portals")]
+        public ToggleNode DebugMode { get; set; } = new ToggleNode(false);
     }
 }
