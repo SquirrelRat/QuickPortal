@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using ExileCore.Shared.Interfaces;
 using ExileCore.Shared.Nodes;
-using SharpDX;
 using ExileCore.Shared.Attributes;
 using System.Windows.Forms;
 
@@ -15,10 +15,10 @@ namespace QuickPortal
         public RangeNode<int> ActionDelay { get; set; } = new RangeNode<int>(150, 50, 500);
 
         [Menu("Hotkey", "Key to trigger portal activation")]
-        public HotkeyNode Hotkey { get; set; } = new HotkeyNode(Keys.F7);
+        public HotkeyNodeV2 Hotkey { get; set; } = new HotkeyNodeV2(Keys.F7);
 
         [Menu("Inventory Key", "Key used to open inventory (default: I)")]
-        public HotkeyNode InventoryKey { get; set; } = new HotkeyNode(Keys.I);
+        public HotkeyNodeV2 InventoryKey { get; set; } = new HotkeyNodeV2(Keys.I);
 
         [Menu("Auto Open Inventory & Use Scroll", "If no portal is on ground, open inventory and use a portal scroll")]
         public ToggleNode AutoOpenInventoryAndUseScroll { get; set; } = new ToggleNode(true);
@@ -32,10 +32,6 @@ namespace QuickPortal
         [Menu("Portal Timeout (sec)", "Maximum time to wait for portal to appear after using scroll")]
         public RangeNode<int> PortalTimeout { get; set; } = new RangeNode<int>(5, 1, 10);
 
-        [Menu("Portal Check Interval (ms)", "How often to check for portal appearance")]
-        public RangeNode<int> PortalCheckInterval { get; set; } = new RangeNode<int>(100, 50, 500);
-
-        [Menu("Debug Mode", "Show debug information about detected portals")]
-        public ToggleNode DebugMode { get; set; } = new ToggleNode(false);
+        public List<string> PortalMetadata { get; set; } = new() { "Metadata/MiscellaneousObjects/MultiplexPortal" };
     }
 }
