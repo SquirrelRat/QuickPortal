@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using ExileCore;
@@ -50,6 +51,8 @@ namespace QuickPortal
         {
             if (Settings?.Hotkey?.Value != null) Input.RegisterKey(Settings.Hotkey.Value);
             Settings.Hotkey.OnValueChanged += RegisterHotkey;
+            Settings.PortalMetadata ??= new List<string> { "Metadata/MiscellaneousObjects/MultiplexPortal" };
+            Settings.PortalMetadata = Settings.PortalMetadata.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
             LogMessage("QuickPortal plugin initialized");
             return true;
         }
@@ -350,7 +353,7 @@ namespace QuickPortal
             ImGui.Text("Portal Metadata");
             ImGui.TextDisabled("Metadata paths matched as portals. Add your own or remove defaults.");
 
-            Settings.PortalMetadata ??= new System.Collections.Generic.List<string>();
+            Settings.PortalMetadata ??= new List<string>();
 
             var toRemove = -1;
             for (var i = 0; i < Settings.PortalMetadata.Count; i++)

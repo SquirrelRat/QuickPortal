@@ -32,6 +32,6 @@ namespace QuickPortal
         [Menu("Portal Timeout (sec)", "Maximum time to wait for portal to appear after using scroll")]
         public RangeNode<int> PortalTimeout { get; set; } = new RangeNode<int>(5, 1, 10);
 
-        public List<string> PortalMetadata { get; set; } = new() { "Metadata/MiscellaneousObjects/MultiplexPortal" };
+        public List<string> PortalMetadata { get; set; }
     }
 }
